@@ -2,6 +2,8 @@ package com.example.android.pets;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +65,11 @@ public class PetCursorAdapter extends CursorAdapter {
         String breed = cursor.getString(breedColumnIndex);
 
         nameTextView.setText(name);
-        summaryTextView.setText(breed);
+        if (!TextUtils.isEmpty(breed)) {
+            summaryTextView.setText(breed);
+        } else { // the user doesn't enter a breed
+            Log.i("Breed not find", "There is no breed");
+            summaryTextView.setText(R.string.unknown_breed);
+        }
     }
 }
