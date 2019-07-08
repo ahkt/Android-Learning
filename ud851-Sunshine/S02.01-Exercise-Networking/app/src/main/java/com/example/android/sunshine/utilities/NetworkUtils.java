@@ -66,7 +66,13 @@ public final class NetworkUtils {
      */
     public static URL buildUrl(String locationQuery) {
         // TODO (1) Fix this method to return the URL used to query Open Weather Map's API
-        return null;
+        URL url = null;
+        try {
+            url = new URL(locationQuery);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return url;
     }
 
     /**
